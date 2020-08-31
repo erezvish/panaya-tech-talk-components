@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="home">
+        <h1>{{msg}}</h1>
+        <button @click="toggleList()">Toggle</button>
+        <div class="lists-container display-flex justify-center">
+            <smart-list v-if="showSmart"></smart-list>
+            <dumb-list-container v-else></dumb-list-container>
+        </div>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import DumbListContainer from '@/components/DumbListContainer';
+import SmartList from '@/components/SmartList';
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+	name: 'Home',
+	components: {
+		DumbListContainer,
+		SmartList,
+	},
+	data() {
+		return {
+			msg: `Let's talk Dumb & Smart Components`,
+			showSmart: true,
+		};
+	},
+	methods: {
+		toggleList() {
+			this.showSmart = !this.showSmart;
+		},
+	},
+};
 </script>
