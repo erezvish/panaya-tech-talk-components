@@ -1,14 +1,14 @@
 <template>
-    <section>
+    <section class="smart-list">
         <h3>This is a smart list</h3>
-        <div class="smart-list">
+        <div>
             <h4 v-if="isLoading">Loading....</h4>
             <ul class="list-layout">
                 <li class="display-flex align-center" v-for="(value, index) in values">
                     <span class="item-value">{{value}}</span>
                     <div class="arrows-group">
-                        <span v-if="index < values.length - 1" class="down-arrow" @click="moveDown(value, index)">▼</span>
-                        <span v-if="index > 0" class="up-arrow" @click="moveUp(value, index)">▲</span>
+                        <span v-if="index < values.length - 1" class="down-arrow" @click="moveDown(index)">▼</span>
+                        <span v-if="index > 0" class="up-arrow" @click="moveUp(index)">▲</span>
                     </div>
                 </li>
             </ul>
@@ -27,10 +27,10 @@ export default {
 		};
 	},
 	methods: {
-		moveDown(value, index) {
+		moveDown(index) {
 			this.values.splice(index + 1, 0, this.values.splice(index, 1)[0]);
 		},
-		moveUp(value, index) {
+		moveUp(index) {
 			this.values.splice(index - 1, 0, this.values.splice(index, 1)[0]);
 		},
 	},

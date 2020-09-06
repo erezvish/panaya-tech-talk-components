@@ -1,7 +1,8 @@
 <template>
     <div id="app">
         <div id="nav">
-            <!-- <router-link to="/">Home</router-link> -->
+            <router-link to="/">First View </router-link>
+            <router-link to="/second">Second View</router-link>
         </div>
         <router-view />
     </div>
@@ -20,9 +21,14 @@
 #nav {
 	padding: 30px;
 
+	router-link {
+		margin-right: 0.3rem;
+	}
+
 	a {
 		font-weight: bold;
 		color: #2c3e50;
+		padding: 6px;
 
 		&.router-link-exact-active {
 			color: #42b983;

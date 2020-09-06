@@ -1,6 +1,6 @@
 <template>
     <section>
-        <dumb-list :values="values" :isLoading="this.isLoading"></dumb-list>
+        <dumb-list :values="values" @move-down="moveDown" @move-up="moveUp"></dumb-list>
     </section>
 </template>
 
@@ -16,9 +16,12 @@ export default {
 			values: [],
 		};
 	},
-	computed: {
-		isLoading() {
-			return !this.values.length;
+	methods: {
+		moveDown(index) {
+			this.values.splice(index + 1, 0, this.values.splice(index, 1)[0]);
+		},
+		moveUp(index) {
+			this.values.splice(index - 1, 0, this.values.splice(index, 1)[0]);
 		},
 	},
 	async created() {

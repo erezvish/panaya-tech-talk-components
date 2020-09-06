@@ -3,7 +3,7 @@
         <h1>{{msg}}</h1>
         <button @click="toggleList()">Toggle</button>
         <div class="lists-container display-flex justify-center">
-            <smart-list v-if="showSmart"></smart-list>
+            <smart-list v-if="isShowSmart"></smart-list>
             <dumb-list-container v-else></dumb-list-container>
         </div>
     </div>
@@ -14,7 +14,7 @@ import DumbListContainer from '@/components/DumbListContainer';
 import SmartList from '@/components/SmartList';
 
 export default {
-	name: 'Home',
+	name: 'FirstView',
 	components: {
 		DumbListContainer,
 		SmartList,
@@ -22,13 +22,18 @@ export default {
 	data() {
 		return {
 			msg: `Let's talk Dumb & Smart Components`,
-			showSmart: true,
+			isShowSmart: true,
 		};
 	},
 	methods: {
 		toggleList() {
-			this.showSmart = !this.showSmart;
+			this.isShowSmart = !this.isShowSmart;
 		},
 	},
+	mounted() {
+		setTimeout(() => {
+			this.msg = 'FED TECH TALK'
+		}, 2000)
+	}
 };
 </script>
